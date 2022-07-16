@@ -25,13 +25,11 @@ const LayoutAuthentication = (props) => {
   );
 };
 
-// Propstype
 LayoutAuthentication.propTypes = {
   heading: PropTypes.string,
   children: PropTypes.node,
 };
 
-// Export and ErrorBoundray
 export default withErrorBoundary(LayoutAuthentication, {
   FallbackComponent: ErrorComponent,
 });

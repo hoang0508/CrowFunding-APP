@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { withErrorBoundary } from "react-error-boundary";
-import ErrorComponent from "../components/common/ErrorComponent";
+
 const LayoutAuthentication = (props) => {
   const { children, heading = "" } = props;
   return (
@@ -25,13 +24,9 @@ const LayoutAuthentication = (props) => {
   );
 };
 
-// Propstype
 LayoutAuthentication.propTypes = {
   heading: PropTypes.string,
   children: PropTypes.node,
 };
 
-// Export and ErrorBoundray
-export default withErrorBoundary(LayoutAuthentication, {
-  FallbackComponent: ErrorComponent,
-});
+export default LayoutAuthentication;

@@ -6,7 +6,7 @@ import { Label } from "../components/label";
 import { Input } from "../components/input";
 const SignupPage = () => {
   // react hook form
-  const { handleSubmit, control } = useForm({});
+  const { handleSubmit } = useForm({});
   return (
     <LayoutAuthentication heading="SignUp">
       <p className="text-center lg:text-sm  text-xs font-normal text-text3 lg:mb-8 mb-6">
@@ -27,7 +27,7 @@ const SignupPage = () => {
       <form>
         <div className="flex flex-col gap-x-3">
           <Label>Full Name *</Label>
-          <Input control={control} name="name"></Input>
+          <Input></Input>
         </div>
       </form>
     </LayoutAuthentication>

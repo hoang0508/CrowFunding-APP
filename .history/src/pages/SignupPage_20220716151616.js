@@ -27,7 +27,7 @@ const SignupPage = () => {
       <form>
         <div className="flex flex-col gap-x-3">
           <Label>Full Name *</Label>
-          <Input control={control} name="name"></Input>
+          <Input control={control} name="fullname"></Input>
         </div>
       </form>
     </LayoutAuthentication>
