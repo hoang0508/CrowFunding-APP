@@ -16,10 +16,8 @@ const Button = ({
   return (
     <button
       type={type}
-      className={`font-semibold py-4 rounded-xl flex justify-center items-center min-h-[56px]
-      ${className} text-white ${
-        !!isLoading ? "opacity-50 pointer-events-none" : ""
-      }`}
+      className={`font-semibold py-4 rounded-xl flex justify-center items-center min-h-[56px]"
+      ${className} text-white`}
       {...rest}
     >
       {child}

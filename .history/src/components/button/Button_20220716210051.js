@@ -9,17 +9,15 @@ const Button = ({
   ...rest
 }) => {
   const child = !!isLoading ? (
-    <div className="w-10 h-10 border-4 border-white border-t-transparent border-b-transparent rounded-full animate-spin"></div>
+    <div className="w-10 h-10 border-4 border-white border-t-transparent animate-spin"></div>
   ) : (
     children
   );
   return (
     <button
       type={type}
-      className={`font-semibold py-4 rounded-xl flex justify-center items-center min-h-[56px]
-      ${className} text-white ${
-        !!isLoading ? "opacity-50 pointer-events-none" : ""
-      }`}
+      className={`font-semibold py-4 rounded-xl flex justify-center items-center min-h-[56px]"
+      ${className} text-white`}
       {...rest}
     >
       {child}

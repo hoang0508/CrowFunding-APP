@@ -63,14 +63,17 @@ const SignupPage = () => {
           ></Input>
         </FormGroup>
         <div className="flex flex-start gap-x-5 mb-5">
-          <Checkbox name="term" checked={acceptTerm} onClick={handleToggleTerm}>
-            <p className="text-sm text-text2 flex-1">
-              I agree to the{" "}
-              <span className="text-secondary underline">Terms of Use</span> and
-              have read and understand the{" "}
-              <span className="text-secondary underline">Privacy policy.</span>
-            </p>
-          </Checkbox>
+          <Checkbox
+            name="term"
+            checked={acceptTerm}
+            onClick={handleToggleTerm}
+          ></Checkbox>
+          <p className="text-sm text-text2 flex-1">
+            I agree to the{" "}
+            <span className="text-secondary underline">Terms of Use</span> and
+            have read and understand the{" "}
+            <span className="text-secondary underline">Privacy policy.</span>
+          </p>
         </div>
         <Button type="submit" className="bg-primary w-full">
           Create my account

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import LayoutAuthentication from "layout/LayoutAuthentication";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -16,12 +16,6 @@ const SignupPage = () => {
   } = useForm({});
   // onSubmit
   const handleSignUp = (values) => {};
-  // useState Term checkbox
-  const [acceptTerm, setAcceptTerm] = useState(false);
-  // Handle Click Toggle Term
-  const handleToggleTerm = () => {
-    setAcceptTerm(!acceptTerm);
-  };
   return (
     <LayoutAuthentication heading="SignUp">
       <p className="text-center lg:text-sm  text-xs font-normal text-text3 lg:mb-8 mb-6">
@@ -63,14 +57,13 @@ const SignupPage = () => {
           ></Input>
         </FormGroup>
         <div className="flex flex-start gap-x-5 mb-5">
-          <Checkbox name="term" checked={acceptTerm} onClick={handleToggleTerm}>
-            <p className="text-sm text-text2 flex-1">
-              I agree to the{" "}
-              <span className="text-secondary underline">Terms of Use</span> and
-              have read and understand the{" "}
-              <span className="text-secondary underline">Privacy policy.</span>
-            </p>
-          </Checkbox>
+          <Checkbox name="term" checked></Checkbox>
+          <p className="text-sm text-text2 flex-1">
+            I agree to the{" "}
+            <span className="text-secondary underline">Terms of Use</span> and
+            have read and understand the{" "}
+            <span className="text-secondary underline">Privacy policy.</span>
+          </p>
         </div>
         <Button type="submit" className="bg-primary w-full">
           Create my account
