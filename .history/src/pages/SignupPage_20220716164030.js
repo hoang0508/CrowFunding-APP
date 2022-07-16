@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { Label } from "components/label";
 import { Input } from "components/input";
 import FormGroup from "components/common/FormGroup";
-import { Button } from "components/button";
 const SignupPage = () => {
   // react hook form
   const {
@@ -64,9 +63,6 @@ const SignupPage = () => {
             <span className="text-secondary underline">Privacy policy.</span>
           </p>
         </div>
-        <Button type="submit" className="bg-primary w-full">
-          Create my account
-        </Button>
       </form>
     </LayoutAuthentication>
   );

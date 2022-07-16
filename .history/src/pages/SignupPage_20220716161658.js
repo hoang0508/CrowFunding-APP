@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { Label } from "components/label";
 import { Input } from "components/input";
 import FormGroup from "components/common/FormGroup";
-import { Button } from "components/button";
 const SignupPage = () => {
   // react hook form
   const {
@@ -55,18 +54,14 @@ const SignupPage = () => {
             placeholder="Create a password"
           ></Input>
         </FormGroup>
-        <div className="flex flex-start gap-x-5 mb-5">
-          <span className="w-5 h-5 border rounded inline-block border-text4"></span>
-          <p className="text-sm text-text2 flex-1">
+        <div className="flex flex-start gap-x-5">
+          <span></span>
+          <p className="text-sm text-text2">
             I agree to the{" "}
             <span className="text-secondary underline">Terms of Use</span> and
-            have read and understand the{" "}
-            <span className="text-secondary underline">Privacy policy.</span>
+            have read and understand the Privacy policy.
           </p>
         </div>
-        <Button type="submit" className="bg-primary w-full">
-          Create my account
-        </Button>
       </form>
     </LayoutAuthentication>
   );

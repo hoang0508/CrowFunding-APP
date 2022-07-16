@@ -64,9 +64,7 @@ const SignupPage = () => {
             <span className="text-secondary underline">Privacy policy.</span>
           </p>
         </div>
-        <Button type="submit" className="bg-primary w-full">
-          Create my account
-        </Button>
+        <Button></Button>
       </form>
     </LayoutAuthentication>
   );
