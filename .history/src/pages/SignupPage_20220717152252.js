@@ -32,7 +32,6 @@ const SignupPage = () => {
     formState: { isValid, isSubmitting, errors },
   } = useForm({
     resolver: yupResolver(schema),
-    mode: "onSubmit",
   });
   // onSubmit
   const handleSignUp = (values) => {};

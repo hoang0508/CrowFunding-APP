@@ -17,24 +17,15 @@ const Input = (props) => {
     name,
     defaultValue: "",
   });
-  console.log(placeholder);
   return (
     <div className="relative">
       <input
         id={name}
         type={type}
-        className={`w-full py-4 px-6 border rounded-xl text-sm font-medium text-text1 placeholder:text-text4 ${
-          error.length > 0 ? "border-error" : "border-strock"
-        }`}
-        placeholder={error.length < 0 ? placeholder : ""}
+        className="w-full py-4 px-6 border border-strock rounded-xl text-sm font-medium text-text1 placeholder:text-text4"
         {...rest}
         {...field}
       />
-      {error.length > 0 && (
-        <span className="text-error font-medium text-sm absolute top-2/4 -translate-y-2/4 left-6 pointer-events-none error-input">
-          {error}
-        </span>
-      )}
     </div>
   );
 };

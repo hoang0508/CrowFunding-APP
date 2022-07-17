@@ -18,10 +18,7 @@ const schema = yup.object({
     .string()
     .email("Invalid email address")
     .required("This field is required"),
-  password: yup
-    .string()
-    .required("This field is required")
-    .min("Password must be 8 character "),
+  password: yup.string().required("This field is required"),
 });
 
 const SignupPage = () => {
@@ -32,7 +29,6 @@ const SignupPage = () => {
     formState: { isValid, isSubmitting, errors },
   } = useForm({
     resolver: yupResolver(schema),
-    mode: "onSubmit",
   });
   // onSubmit
   const handleSignUp = (values) => {};

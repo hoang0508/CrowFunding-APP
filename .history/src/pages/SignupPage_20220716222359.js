@@ -14,14 +14,6 @@ import * as yup from "yup";
 
 const schema = yup.object({
   name: yup.string().required("This field is required"),
-  email: yup
-    .string()
-    .email("Invalid email address")
-    .required("This field is required"),
-  password: yup
-    .string()
-    .required("This field is required")
-    .min("Password must be 8 character "),
 });
 
 const SignupPage = () => {
@@ -32,7 +24,6 @@ const SignupPage = () => {
     formState: { isValid, isSubmitting, errors },
   } = useForm({
     resolver: yupResolver(schema),
-    mode: "onSubmit",
   });
   // onSubmit
   const handleSignUp = (values) => {};
@@ -42,6 +33,7 @@ const SignupPage = () => {
   const handleToggleTerm = () => {
     setAcceptTerm(!acceptTerm);
   };
+  console.log(errors.message);
   return (
     <LayoutAuthentication heading="SignUp">
       <p className="text-center lg:text-sm  text-xs font-normal text-text3 lg:mb-8 mb-6">
@@ -62,12 +54,7 @@ const SignupPage = () => {
       <form onSubmit={handleSubmit(handleSignUp)}>
         <FormGroup>
           <Label htmlFor="name">Full Name *</Label>
-          <Input
-            control={control}
-            name="name"
-            placeholder="Jhon Doe"
-            error={errors.name?.message}
-          ></Input>
+          <Input control={control} name="name" placeholder="Jhon Doe"></Input>
         </FormGroup>
         <FormGroup>
           <Label htmlFor="email">Email *</Label>
@@ -76,7 +63,6 @@ const SignupPage = () => {
             name="email"
             type="email"
             placeholder="example@gmail.com"
-            error={errors.email?.message}
           ></Input>
         </FormGroup>
         <FormGroup>
@@ -86,7 +72,6 @@ const SignupPage = () => {
             name="password"
             type="password"
             placeholder="Create a password"
-            error={errors.password?.message}
           ></Input>
         </FormGroup>
         <div className="flex flex-start gap-x-5 mb-5">

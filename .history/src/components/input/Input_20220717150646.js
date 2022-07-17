@@ -17,7 +17,6 @@ const Input = (props) => {
     name,
     defaultValue: "",
   });
-  console.log(placeholder);
   return (
     <div className="relative">
       <input
@@ -30,11 +29,9 @@ const Input = (props) => {
         {...rest}
         {...field}
       />
-      {error.length > 0 && (
-        <span className="text-error font-medium text-sm absolute top-2/4 -translate-y-2/4 left-6 pointer-events-none error-input">
-          {error}
-        </span>
-      )}
+      <span className="text-error absolute top-2/4 -translate-x-2/4 left-6">
+        {error}
+      </span>
     </div>
   );
 };

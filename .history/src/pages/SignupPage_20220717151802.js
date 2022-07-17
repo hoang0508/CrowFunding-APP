@@ -18,10 +18,7 @@ const schema = yup.object({
     .string()
     .email("Invalid email address")
     .required("This field is required"),
-  password: yup
-    .string()
-    .required("This field is required")
-    .min("Password must be 8 character "),
+  password: yup.string().required("This field is required"),
 });
 
 const SignupPage = () => {
@@ -32,7 +29,6 @@ const SignupPage = () => {
     formState: { isValid, isSubmitting, errors },
   } = useForm({
     resolver: yupResolver(schema),
-    mode: "onSubmit",
   });
   // onSubmit
   const handleSignUp = (values) => {};
@@ -76,7 +72,6 @@ const SignupPage = () => {
             name="email"
             type="email"
             placeholder="example@gmail.com"
-            error={errors.email?.message}
           ></Input>
         </FormGroup>
         <FormGroup>
@@ -86,7 +81,6 @@ const SignupPage = () => {
             name="password"
             type="password"
             placeholder="Create a password"
-            error={errors.password?.message}
           ></Input>
         </FormGroup>
         <div className="flex flex-start gap-x-5 mb-5">
