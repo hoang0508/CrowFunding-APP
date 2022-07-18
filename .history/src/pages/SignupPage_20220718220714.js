@@ -63,7 +63,7 @@ const SignupPage = () => {
           Sign in
         </Link>
       </p>
-      <button className="flex items-center justify-center gap-x-2 w-full py-4 mb-5 border border-strock dark:border-darkStroke rounded-xl">
+      <button className="flex items-center justify-center gap-x-2 w-full py-4 mb-5 border border-strock dark:border-text3 rounded-xl">
         <img src="./icon-google.png" alt="google" />
         <span className="text-text2 dark:text-white font-semibold text-base">
           Sign up with google

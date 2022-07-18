@@ -1,16 +1,15 @@
-import useToggleValue from "hooks/useToggleValue";
-import React from "react";
+import React, { useState } from "react";
 import LayoutAuthentication from "layout/LayoutAuthentication";
-import FormGroup from "components/common/FormGroup";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { Label } from "components/label";
 import { Input } from "components/input";
-import { IconEyeToggle } from "components/icons";
-import { Checkbox } from "components/checkbox";
+import FormGroup from "components/common/FormGroup";
 import { Button } from "components/button";
+import { Checkbox } from "components/checkbox";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { IconEyeToggle } from "components/icons";
 
 // Validation Form vs Yup
 
@@ -31,7 +30,7 @@ const SignupPage = () => {
   const {
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { isValid, isSubmitting, errors },
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onSubmit",
@@ -39,22 +38,17 @@ const SignupPage = () => {
   // onSubmit
   const handleSignUp = (values) => {};
   // useState Term checkbox
-  // const [acceptTerm, setAcceptTerm] = useState(false);
+  const [acceptTerm, setAcceptTerm] = useState(false);
   // Show password
-  // const [showPassword, setShowPassword] = useState(false);
-  // // Handle Click Toggle Term
-  // const handleToggleTerm = () => {
-  //   setAcceptTerm(!acceptTerm);
-  // };
+  const [showPassword, setShowPassword] = useState(false);
+  // Handle Click Toggle Term
+  const handleToggleTerm = () => {
+    setAcceptTerm(!acceptTerm);
+  };
   // Handle Toggle Password
-  // const handleTogglePassword = () => {
-  //   setShowPassword(!showPassword);
-  // };
-  // custom hook toggle value
-  const { value: acceptTerm, handleToggleValue: handleToggleTerm } =
-    useToggleValue(false);
-  const { value: showPassword, handleToggleValue: handleTogglePassword } =
-    useToggleValue(false);
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <LayoutAuthentication heading="SignUp">
       <p className="text-center lg:text-sm  text-xs font-normal text-text3 lg:mb-8 mb-6">
@@ -63,13 +57,13 @@ const SignupPage = () => {
           Sign in
         </Link>
       </p>
-      <button className="flex items-center justify-center gap-x-2 w-full py-4 mb-5 border border-strock dark:border-darkStroke rounded-xl">
+      <button className="flex items-center justify-center gap-x-2 w-full py-4 mb-5 border border-strock rounded-xl">
         <img src="./icon-google.png" alt="google" />
-        <span className="text-text2 dark:text-white font-semibold text-base">
+        <span className="text-text2 font-semibold text-base">
           Sign up with google
         </span>
       </button>
-      <p className="text-center font-normal lg:text-sm text-xs text-text2 dark:text-white lg:mb-8 mb-4">
+      <p className="text-center font-normal lg:text-sm text-xs text-text2 lg:mb-8 mb-4">
         Or sign up with email
       </p>
       <form onSubmit={handleSubmit(handleSignUp)}>
@@ -97,7 +91,7 @@ const SignupPage = () => {
           <Input
             control={control}
             name="password"
-            type={`${showPassword ? "text" : "password"}`}
+            type="password"
             placeholder="Create a password"
             error={errors.password?.message}
           >
@@ -106,7 +100,7 @@ const SignupPage = () => {
         </FormGroup>
         <div className="flex flex-start gap-x-5 mb-5">
           <Checkbox name="term" checked={acceptTerm} onClick={handleToggleTerm}>
-            <p className="lg:text-sm text-xs text-text2 dark:text-text3 flex-1">
+            <p className="text-sm text-text2 flex-1">
               I agree to the{" "}
               <span className="text-secondary underline">Terms of Use</span> and
               have read and understand the{" "}

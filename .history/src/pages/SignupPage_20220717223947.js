@@ -63,7 +63,7 @@ const SignupPage = () => {
           Sign in
         </Link>
       </p>
-      <button className="flex items-center justify-center gap-x-2 w-full py-4 mb-5 border border-strock dark:border-darkStroke rounded-xl">
+      <button className="flex items-center justify-center gap-x-2 w-full py-4 mb-5 border border-strock rounded-xl">
         <img src="./icon-google.png" alt="google" />
         <span className="text-text2 dark:text-white font-semibold text-base">
           Sign up with google
@@ -106,7 +106,7 @@ const SignupPage = () => {
         </FormGroup>
         <div className="flex flex-start gap-x-5 mb-5">
           <Checkbox name="term" checked={acceptTerm} onClick={handleToggleTerm}>
-            <p className="lg:text-sm text-xs text-text2 dark:text-text3 flex-1">
+            <p className="lg:text-sm text-xs text-text2 flex-1">
               I agree to the{" "}
               <span className="text-secondary underline">Terms of Use</span> and
               have read and understand the{" "}

@@ -10,7 +10,7 @@ const LayoutAuthentication = (props) => {
       <img
         src="/ellipse.png"
         alt="bg"
-        className="hidden lg:block absolute bottom-0 left-0 right-0 z-[-1]"
+        className="absolute bottom-0 left-0 right-0 z-[-1]"
       />
       <Link to="/" className="inline-block mb-5 lg:mb-16">
         <img src="/logo.png" alt="crowfounding-app" />

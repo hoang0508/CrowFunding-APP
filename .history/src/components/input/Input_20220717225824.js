@@ -31,7 +31,7 @@ const Input = (props) => {
             ? "border-error"
             : "border-strock dark:border-darkStroke"
         } ${children ? "pr-16" : ""}`}
-        placeholder={error.length <= 0 ? placeholder : ""}
+        placeholder={error.length < 0 ? placeholder : ""}
         {...rest}
         {...field}
       />
