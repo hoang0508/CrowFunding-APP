@@ -8,18 +8,6 @@ import { Link } from "react-router-dom";
 import LayoutAuthentication from "../layout/LayoutAuthentication";
 import useToggleValue from "hooks/useToggleValue";
 import { IconEyeToggle } from "components/icons";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { Button } from "components/button";
-// Validation Form vs Yup
-
-const schema = yup.object({
-  email: yup.string().email().required("This field is required"),
-  password: yup
-    .string()
-    .required("This field is required")
-    .min("Password must be 8 character "),
-});
 
 const SignInPage = () => {
   const {
@@ -28,7 +16,6 @@ const SignInPage = () => {
     control,
   } = useForm({
     mode: "onSubmit",
-    resolver: yupResolver(schema),
   });
   const handleSignIn = (values) => {};
 
@@ -45,7 +32,7 @@ const SignInPage = () => {
       <ButtonGoogle text="Sign in with google" />
       <form onSubmit={handleSubmit(handleSignIn)}>
         <FormGroup>
-          <Label htmlFor="email">Email *</Label>
+          <Label htmlFor="name">Email *</Label>
           <Input
             control={control}
             name="email"
@@ -59,22 +46,12 @@ const SignInPage = () => {
             control={control}
             name="password"
             type={`${showPassword ? "password" : "text"}`}
-            placeholder="Enter Password"
+            placeholder="example@gmail.com"
             error={errors.email?.message}
           >
             <IconEyeToggle open={showPassword} onClick={handleTogglePassword} />
           </Input>
         </FormGroup>
-        <FormGroup>
-          <div className="text-right">
-            <span className="text-sm font-medium text-primary inline-block">
-              Forgot password
-            </span>
-          </div>
-        </FormGroup>
-        <Button type="submit" className="bg-primary w-full">
-          Create my account
-        </Button>
       </form>
     </LayoutAuthentication>
   );

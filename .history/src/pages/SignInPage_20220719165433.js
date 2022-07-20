@@ -14,7 +14,10 @@ import { Button } from "components/button";
 // Validation Form vs Yup
 
 const schema = yup.object({
-  email: yup.string().email().required("This field is required"),
+  email: yup
+    .string()
+    .email("Invalid email address")
+    .required("This field is required"),
   password: yup
     .string()
     .required("This field is required")

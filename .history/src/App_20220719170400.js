@@ -5,7 +5,7 @@ const SignInPage = lazy(() => import("./pages/SignInPage"));
 
 function App() {
   return (
-    <Suspense fallback={<></>}>
+    <Suspense>
       <Routes>
         <Route path="/sign-up" element={<SignUpPage />}></Route>
         <Route path="/sign-in" element={<SignInPage />}></Route>
