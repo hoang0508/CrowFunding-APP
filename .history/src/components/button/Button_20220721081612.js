@@ -18,7 +18,7 @@ const Button = ({
     <button
       type={type}
       className={classNames(
-        "font-semibold p-4 rounded-xl flex justify-center items-center min-h-[56px]  text-white",
+        "font-semibold p-4 rounded-xl flex justify-center items-center min-h-[56px] w-full text-white",
         !!isLoading ? "opacity-50 pointer-events-none" : "",
         className
       )}
