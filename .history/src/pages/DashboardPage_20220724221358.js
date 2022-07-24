@@ -22,7 +22,7 @@ const DashboardPage = () => {
           ))}
       </CampaignGrid>
       <Gap />
-      <Heading>Recent Campaign</Heading>
+      <Heading>Popular Campaign</Heading>
       <CampaignGrid>
         {Array(4)
           .fill(0)
