@@ -10,7 +10,7 @@ function App() {
     <Suspense fallback={<></>}>
       <Routes>
         <Route path="/" element={<DashboardPage />}></Route>
-        <Route path="/campaign" element={<CampaignPage />}></Route>
+        <Route path="/" element={<CampaignPage />}></Route>
         <Route path="/sign-up" element={<SignUpPage />}></Route>
         <Route path="/sign-in" element={<SignInPage />}></Route>
       </Routes>
