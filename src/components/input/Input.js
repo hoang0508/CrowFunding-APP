@@ -21,7 +21,6 @@ const Input = (props) => {
     name,
     defaultValue: "",
   });
-  console.log(placeholder);
   return (
     <div className="relative">
       <input

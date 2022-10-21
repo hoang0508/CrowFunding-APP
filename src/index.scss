@@ -16,3 +16,21 @@
 input:focus + .error-input {
   display: none;
 }
+
+// quil
+.quill {
+  border: 1px solid #f1f1f3;
+  border-radius: 10px;
+  padding: 15px 25px;
+  .ql-toolbar.ql-snow {
+    border: none;
+    background: none;
+    @apply bg-text4 bg-opacity-10 inline-block rounded-xl py-3 px-5;
+  }
+  .ql-container.ql-snow {
+    @apply border-none font-primary text-base;
+  }
+  .ql-editor.ql-blank::before {
+    @apply not-italic text-sm text-text4;
+  }
+}
