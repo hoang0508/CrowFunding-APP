@@ -1,13 +1,12 @@
 import { Button } from "components/button";
 import Heading from "components/common/Heading";
-import LayoutDashboard from "layout/LayoutDashboard";
 import CampaignFeature from "modules/campaign/CampaignFeature";
 import CampaignGrid from "modules/campaign/CampaignGrid";
 import React from "react";
 
 const CampaignPage = () => {
   return (
-    <LayoutDashboard>
+    <>
       <div className="flex items-center justify-between mb-10 bg-white  rounded-3xl py-8 px-10">
         <div className="flex items-start gap-x-6">
           <div className="w-14 h-14 flex items-center justify-center rounded-full bg-secondary text-white bg-opacity-60">
@@ -71,7 +70,7 @@ const CampaignPage = () => {
           </svg>
         </Button>
       </div>
-    </LayoutDashboard>
+    </>
   );
 };
 

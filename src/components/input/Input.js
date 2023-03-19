@@ -33,7 +33,7 @@ const Input = (props) => {
             : "border-strock dark:border-darkStroke",
           children ? "pr-16" : ""
         )}
-        // className={`w-full py-4 px-6 border rounded-xl text-sm font-medium text-text1 placeholder:text-text4 dark:placeholder:text-text2 dark:text-white bg-transparent ${
+        // className={`${className} w-full py-4 px-6 border rounded-xl text-sm font-medium text-text1 placeholder:text-text4 dark:placeholder:text-text2 dark:text-white bg-transparent   ${
         //   error.length > 0
         //     ? "border-error"
         //     : "border-strock dark:border-darkStroke"

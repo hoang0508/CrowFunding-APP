@@ -9,7 +9,7 @@ import { v4 } from "uuid";
 
 const DashboardPage = () => {
   return (
-    <LayoutDashboard>
+    <>
       <Heading number="4">Your Campaign</Heading>
       <CampaignFeature></CampaignFeature>
       <Gap />
@@ -30,7 +30,7 @@ const DashboardPage = () => {
             <CampaignItem key={v4()}></CampaignItem>
           ))}
       </CampaignGrid>
-    </LayoutDashboard>
+    </>
   );
 };
 

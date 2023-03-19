@@ -10,6 +10,7 @@ const Button = ({
   isLoading = false,
   ...rest
 }) => {
+  console.log(rest);
   const child = !!isLoading ? (
     <div className="w-10 h-10 border-4 border-white border-t-transparent border-b-transparent rounded-full animate-spin"></div>
   ) : (
@@ -19,7 +20,7 @@ const Button = ({
 
   switch (rest.kind) {
     case "primary":
-      defaultClassName = defaultClassName + "bg-primary text-white";
+      defaultClassName = defaultClassName + " bg-primary text-white";
       break;
 
     case "secondary":
