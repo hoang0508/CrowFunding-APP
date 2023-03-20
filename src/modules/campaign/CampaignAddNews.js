@@ -12,14 +12,24 @@ import axios from "axios";
 import { Button } from "components/button";
 import useOnChange from "hooks/useOnChange";
 import { toast } from "react-toastify";
+import DatePicker from "react-date-picker";
+import ImageUpload from "components/image/ImageUpload";
 Quill.register("modules/imageUploader", ImageUploader);
+
+const categoriesData = ["architecture", "education"];
 
 const CampaignAddNews = () => {
   // hook form
-  const { handleSubmit, control, setValue } = useForm();
+  const { handleSubmit, control, setValue, reset, watch } = useForm();
+
+  // watch dropdown value
+  const getDropdownLabel = (name, defaultValue = "") => {
+    const value = watch(name) || defaultValue;
+    return value;
+  };
+
   // state content quil
   const [content, setContent] = useState();
-  const handleAddNewCampaign = () => {};
 
   // react quil upload image
   const modules = useMemo(
@@ -78,6 +88,33 @@ const CampaignAddNews = () => {
     setValue(name, value);
   };
 
+  // date picker
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+
+  // reset values
+  const resetValues = () => {
+    setStartDate("");
+    setEndDate("");
+    reset({});
+  };
+
+  // hanlde submit handleAddNewCampaign
+  const handleAddNewCampaign = async (values) => {
+    try {
+      await axios.post(`/api/campaigns`, {
+        ...values,
+        content,
+        startDate,
+        endDate,
+      });
+      toast.success("Create campaigns successfully");
+      resetValues();
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div className="bg-white rounded-xl py-10 px-[66px]">
       <div className="text-center">
@@ -101,15 +138,20 @@ const CampaignAddNews = () => {
                 Select a category *
               </Label>
               <Dropdown>
-                <Dropdown.Select placeholder="Select a category"></Dropdown.Select>
+                <Dropdown.Select
+                  placeholder={getDropdownLabel("category", "Select category")}
+                ></Dropdown.Select>
                 <Dropdown.List>
-                  <Dropdown.Option
-                    onClick={() =>
-                      handleSelectDropdownOption("category", "Architecture")
-                    }
-                  >
-                    Architecture
-                  </Dropdown.Option>
+                  {categoriesData.map((category) => (
+                    <Dropdown.Option
+                      key={category}
+                      onClick={() =>
+                        handleSelectDropdownOption("category", category)
+                      }
+                    >
+                      <span className="capitalize">{category}</span>
+                    </Dropdown.Option>
+                  ))}
                 </Dropdown.List>
               </Dropdown>
             </FormGroup>
@@ -136,6 +178,13 @@ const CampaignAddNews = () => {
           </FormGroup>
           <FormRow>
             <FormGroup>
+              <Label>Featured image</Label>
+              <ImageUpload onChange={setValue} name="feature_image" />
+            </FormGroup>
+            <FormGroup></FormGroup>
+          </FormRow>
+          <FormRow>
+            <FormGroup>
               <Label className="text-left">Goal *</Label>
               <Input
                 control={control}
@@ -148,7 +197,7 @@ const CampaignAddNews = () => {
               <Input
                 control={control}
                 placeholder="$0.00 USD"
-                name="goal"
+                name="amount"
               ></Input>
             </FormGroup>
           </FormRow>
@@ -158,7 +207,7 @@ const CampaignAddNews = () => {
               <Input
                 control={control}
                 placeholder="Amount Prefilled"
-                name="Amount Prefilled"
+                name="prefilled"
               ></Input>
               <p className="text-sm text-left text-text3">
                 It will help fill amount box by click, place each amount by
@@ -167,7 +216,7 @@ const CampaignAddNews = () => {
             </FormGroup>
             <FormGroup>
               <Label className="text-left">Video</Label>
-              <Input control={control} placeholder="Video" name="Video"></Input>
+              <Input control={control} placeholder="Video" name="video"></Input>
               <p className="text-sm text-left text-text3">
                 Place Youtube or Vimeo Video URL
               </p>
@@ -191,7 +240,9 @@ const CampaignAddNews = () => {
                 Country
               </Label>
               <Dropdown>
-                <Dropdown.Select placeholder="Select a category"></Dropdown.Select>
+                <Dropdown.Select
+                  placeholder={getDropdownLabel("country", "Select country")}
+                ></Dropdown.Select>
                 <Dropdown.List>
                   <Dropdown.Search
                     placeholder="Search country"
@@ -219,23 +270,23 @@ const CampaignAddNews = () => {
           <FormRow>
             <FormGroup>
               <Label className="text-left">Start Date</Label>
-              <Input
-                control={control}
-                placeholder="Start Date"
-                name="Start Date"
-              ></Input>
+              <DatePicker
+                onChange={setStartDate}
+                value={startDate}
+                format="dd-MM-yyyy"
+              />
             </FormGroup>
             <FormGroup>
               <Label className="text-left">End Date</Label>
-              <Input
-                control={control}
-                placeholder="End Date"
-                name="End Date"
-              ></Input>
+              <DatePicker
+                onChange={setEndDate}
+                value={endDate}
+                format="dd-MM-yyyy"
+              />
             </FormGroup>
           </FormRow>
           <div>
-            <Button kind="primary" className="mx-auto px-10">
+            <Button type="submit" kind="primary" className="mx-auto px-10">
               Submit new campaign
             </Button>
           </div>

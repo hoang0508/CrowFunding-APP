@@ -1,20 +1,63 @@
 {
-  "users": [
+  "users": [],
+  "categories": [],
+  "campaigns": [
     {
-      "id": 1,
-      "firstName": "John",
-      "lastName": "Doe",
-      "active": true,
-      "posts": 10,
-      "messages": 50
+      "title": "Powered Kits Learning Boxes",
+      "short_description": "Fun, durable and reusable boxes with\neco-friendly options.",
+      "goal": "100",
+      "amount": "200",
+      "prefilled": "300",
+      "video": "https://youtu.be/4sTEd1BVdLQ?list=RD4sTEd1BVdLQ",
+      "country": "Vietnam",
+      "content": "<p>Fun, durable and reusable boxes with</p><p>eco-friendly options.</p>",
+      "startDate": "2023-03-19T14:30:40.180Z",
+      "endDate": "2023-03-25T17:00:00.000Z",
+      "id": 1
     },
     {
-      "id": 8,
-      "firstName": "Clay",
-      "lastName": "Chung",
-      "active": true,
-      "posts": 8,
-      "messages": 5
+      "title": "",
+      "short_description": "",
+      "goal": "",
+      "amount": "",
+      "prefilled": "",
+      "video": "",
+      "feature_image": "https://source.unsplash.com/random",
+      "content": "<p><br></p>",
+      "startDate": "2023-03-20T02:45:14.671Z",
+      "endDate": "2023-03-20T02:45:14.671Z",
+      "id": 2
+    },
+    {
+      "title": "",
+      "short_description": "",
+      "goal": "",
+      "amount": "",
+      "prefilled": "",
+      "video": "",
+      "feature_image": {
+        "thumb": "https://i.ibb.co/M1RsjLB/card-images.png",
+        "url": "https://i.ibb.co/X5zbdTY/card-images.png"
+      },
+      "startDate": "2023-03-20T03:24:59.889Z",
+      "endDate": "2023-03-20T03:24:59.889Z",
+      "id": 3
+    },
+    {
+      "title": "",
+      "short_description": "",
+      "goal": "",
+      "amount": "",
+      "prefilled": "",
+      "video": "",
+      "feature_image": {
+        "medium": "https://i.ibb.co/QJh38QD/image-2023-03-08-T06-59-38-759-Z.png",
+        "thumb": "https://i.ibb.co/sgcd5RW/image-2023-03-08-T06-59-38-759-Z.png",
+        "url": "https://i.ibb.co/b6YMHmb/image-2023-03-08-T06-59-38-759-Z.png"
+      },
+      "startDate": "2023-03-20T03:26:31.511Z",
+      "endDate": "2023-03-20T03:26:31.511Z",
+      "id": 4
     }
   ]
 }
