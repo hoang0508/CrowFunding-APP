@@ -11,6 +11,8 @@ import { IconEyeToggle } from "components/icons";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Button } from "components/button";
+import { useDispatch } from "react-redux";
+import { authLogin } from "store/auth/auth-slice";
 // Validation Form vs Yup
 
 const schema = yup.object({
@@ -18,10 +20,14 @@ const schema = yup.object({
   password: yup
     .string()
     .required("This field is required")
-    .min("Password must be 8 character "),
+    .min(8, "Password must be 8 character "),
 });
 
 const SignInPage = () => {
+  // dispatch
+  const dispatch = useDispatch();
+
+  // hook form
   const {
     handleSubmit,
     formState: { errors },
@@ -30,7 +36,11 @@ const SignInPage = () => {
     mode: "onSubmit",
     resolver: yupResolver(schema),
   });
-  const handleSignIn = (values) => {};
+
+  // handle login
+  const handleSignIn = (values) => {
+    dispatch(authLogin(values));
+  };
 
   const { value: showPassword, handleToggleValue: handleTogglePassword } =
     useToggleValue(false);
@@ -38,7 +48,7 @@ const SignInPage = () => {
     <LayoutAuthentication heading="SignIn">
       <p className="text-center lg:text-sm  text-xs font-normal text-text3 lg:mb-8 mb-6">
         Dont have an account?
-        <Link to="/sign-up" className="text-primary font-medium underline">
+        <Link to="/register" className="text-primary font-medium underline">
           Sign up
         </Link>
       </p>

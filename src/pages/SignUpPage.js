@@ -11,6 +11,8 @@ import { Input } from "components/input";
 import { IconEyeToggle } from "components/icons";
 import { Checkbox } from "components/checkbox";
 import { Button } from "components/button";
+import { useDispatch } from "react-redux";
+import { authRegister } from "store/auth/auth-slice";
 
 // Validation Form vs Yup
 
@@ -23,21 +25,31 @@ const schema = yup.object({
   password: yup
     .string()
     .required("This field is required")
-    .min("Password must be 8 character "),
+    .min(8, "Password must be 8 character"),
 });
 
 const SignupPage = () => {
+  // dispatch
+  const dispatch = useDispatch();
   // react hook form
   const {
     handleSubmit,
     control,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onSubmit",
   });
   // onSubmit
-  const handleSignUp = (values) => {};
+  const handleSignUp = (values) => {
+    try {
+      dispatch(authRegister(values));
+      reset({});
+    } catch (error) {
+      console.log(error);
+    }
+  };
   // useState Term checkbox
   // const [acceptTerm, setAcceptTerm] = useState(false);
   // Show password
@@ -59,8 +71,8 @@ const SignupPage = () => {
     <LayoutAuthentication heading="SignUp">
       <p className="text-center lg:text-sm  text-xs font-normal text-text3 lg:mb-8 mb-6">
         Already have an account?
-        <Link to="/sign-in" className="text-primary font-medium underline">
-          Sign in
+        <Link to="/login" className="text-primary font-medium underline">
+          Login
         </Link>
       </p>
       <button className="flex items-center justify-center gap-x-2 w-full py-4 mb-5 border border-strock dark:border-darkStroke rounded-xl">
