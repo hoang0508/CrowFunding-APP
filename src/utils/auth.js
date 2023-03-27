@@ -40,3 +40,20 @@ export const getToken = () => {
     refresh_token,
   };
 };
+
+// LOGOUT
+export const logOut = () => {
+  const access_token = Cookies.get(accessTokenKey);
+  if (access_token) {
+    Cookies.remove(accessTokenKey, {
+      ...objCookies,
+      path: "/",
+      domain: process.env.COOKIE_DOMAIN,
+    });
+    Cookies.remove(refreshTokenKey, {
+      ...objCookies,
+      path: "/",
+      domain: process.env.COOKIE_DOMAIN,
+    });
+  }
+};

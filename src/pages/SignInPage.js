@@ -44,6 +44,7 @@ const SignInPage = () => {
 
   const { value: showPassword, handleToggleValue: handleTogglePassword } =
     useToggleValue(false);
+
   return (
     <LayoutAuthentication heading="SignIn">
       <p className="text-center lg:text-sm  text-xs font-normal text-text3 lg:mb-8 mb-6">

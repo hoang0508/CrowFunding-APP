@@ -8,7 +8,9 @@ import {
   IconWidthdraw,
 } from "components/icons";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { authLogout } from "store/auth/auth-slice";
 
 const sidebarLinks = [
   {
@@ -52,22 +54,39 @@ const sidebarLinks = [
 const DashboardSidebar = () => {
   const navLinkClass = `flex items-center md:justify-center md:w-12 md:h-12 md:rounded-lg md:mb-8  last:bg-white last:mt-auto last:shadow-sdprimary
   `;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(authLogout());
+    navigate("/login");
+  };
   return (
     <div className="w-full md:w-[76px] rounded-lg shadow-[10px_10px_20px_rgba(218,_213,_213,_0.15)] bg-white px-[14px] py-10 flex-shrink-0">
-      {sidebarLinks.map((link) => (
-        <NavLink
-          to={link.url}
-          key={link.title}
-          className={({ isActive }) =>
-            isActive
-              ? `${navLinkClass} bg-primary text-primary bg-opacity-20`
-              : `${navLinkClass} text-icon-color`
-          }
-        >
-          <span>{link.icon}</span>
-          <span className="md:hidden">{link.title}</span>
-        </NavLink>
-      ))}
+      {sidebarLinks.map((link) => {
+        if (link.url === "/logout") {
+          return (
+            <button className={navLinkClass} onClick={() => handleLogout()}>
+              <span>{link.icon}</span>
+              <span className="md:hidden">{link.title}</span>
+            </button>
+          );
+        }
+        return (
+          <NavLink
+            to={link.url}
+            key={link.title}
+            className={({ isActive }) =>
+              isActive
+                ? `${navLinkClass} bg-primary text-primary bg-opacity-20`
+                : `${navLinkClass} text-icon-color`
+            }
+          >
+            <span>{link.icon}</span>
+            <span className="md:hidden">{link.title}</span>
+          </NavLink>
+        );
+      })}
     </div>
   );
 };
